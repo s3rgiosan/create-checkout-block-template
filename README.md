@@ -1,31 +1,23 @@
-# @woocommerce/extend-cart-checkout-block
+# @s3rgiosan/create-checkout-block-template
 
-This is a template to be used with `@wordpress/create-block` to create a WooCommerce Blocks extension starting point.
+Template for [`@wordpress/create-block`](https://github.com/WordPress/gutenberg/tree/HEAD/packages/create-block/README.md) to create WooCommerce Checkout blocks.
 
-## Installation
+## Usage
 
-From your `plugins` directory run:
+This block template can be used by running the following command:
 
-```sh
-npx @wordpress/create-block -t @woocommerce/extend-cart-checkout-block your_extension_name
+```bash
+npx  @wordpress/create-block --template @s3rgiosan/create-checkout-block-template
 ```
-
-When this has completed, go to your WordPress plugins page and activate the plugin.
-
-Add some items to your cart and visit the Checkout block, notice there is additional data on the block that this template has added.
 
 ### Installing `wp-prettier` (optional)
 
 WooCommerce Blocks uses `wp-prettier` to format the JS files. If you want to use `wp-prettier`, you will need to run the following command:
 
-```sh
+```bash
 nvm use && npm i --D "prettier@npm:wp-prettier@latest"
 ```
 
-### Installing `wp-env` (optional)
+## Changelog
 
-`wp-env` lets you easily set up a local WordPress environment for building and testing your extension. If you want to use `wp-env`, you will need to run the following command:
-
-```sh
-nvm use && npm i -D @wordpress/env && npm set-script wp-env "wp-env"
-```
+A complete listing of all notable changes to this project are documented in [CHANGELOG.md](https://github.com/s3rgiosan/create-checkout-block-template/blob/main/CHANGELOG.md).
