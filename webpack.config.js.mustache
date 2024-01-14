@@ -11,19 +11,14 @@ const defaultRules = defaultConfig.module.rules.filter( ( rule ) => {
 module.exports = {
 	...defaultConfig,
 	entry: {
-		index: path.resolve(process.cwd(), 'src', 'js', 'index.js'),
-		'{{slug}}-checkout-newsletter-subscription-block': path.resolve(
+		'{{slug}}-block': path.resolve(
 			process.cwd(),
 			'src',
-			'js',
-			'checkout-newsletter-subscription-block',
 			'index.js'
 		),
-		'{{slug}}-checkout-newsletter-subscription-block-frontend': path.resolve(
+		'{{slug}}-block-frontend': path.resolve(
 			process.cwd(),
 			'src',
-			'js',
-			'checkout-newsletter-subscription-block',
 			'frontend.js'
 		),
 	},
@@ -42,27 +37,6 @@ module.exports = {
 						options: {
 							sassOptions: {
 								includePaths: [ 'src/css' ],
-							},
-							additionalData: ( content, loaderContext ) => {
-								const {
-									resourcePath,
-									rootContext,
-								} = loaderContext;
-								const relativePath = path.relative(
-									rootContext,
-									resourcePath
-								);
-
-								if (
-									relativePath.startsWith( 'src/css/' )
-								) {
-									return content;
-								}
-
-								// Add code here to prepend to all .scss/.sass files.
-								return (
-									'@import "colors"; ' + content
-								);
 							},
 						},
 					},
