@@ -7,5 +7,12 @@ module.exports = {
 			'@wordpress/prettier-config',
 			'@wordpress/scripts',
 		],
+		transformer: ( view ) => {
+			const slugConstantCase = view.slug.toUpperCase().replace(/\s+/g, '_').replace(/[^A-Z0-9_]/g, '');
+			return {
+				...view,
+				slugConstantCase,
+			};
+		},
 	},
 };
