@@ -7,7 +7,7 @@ Template for [`@wordpress/create-block`](https://github.com/WordPress/gutenberg/
 This block template can be used by running the following command:
 
 ```bash
-npx  @wordpress/create-block --template @s3rgiosan/create-checkout-block-template
+npx @wordpress/create-block@latest --template @s3rgiosan/create-checkout-block-template
 ```
 
 ### Installing `wp-prettier` (optional)
