@@ -19,15 +19,20 @@
  * @package         {{namespace}}
  */
 
-define ( '{{slugConstantCase}}_VERSION', '0.1.0' );
+define( '{{slugConstantCase}}_BLOCK_PLUGIN_VERSION', '0.1.0' );
+define( '{{slugConstantCase}}_BLOCK_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( '{{slugConstantCase}}_BLOCK_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
-add_action('woocommerce_blocks_loaded', function() {
-	require_once __DIR__ . '/{{slug}}-blocks-integration.php';
+add_action(
+	'woocommerce_blocks_loaded',
+	function() {
+		require_once __DIR__ . '/{{slug}}-blocks-integration.php';
 
-	add_action(
-		'woocommerce_blocks_checkout_block_registration',
-		function( $integration_registry ) {
-			$integration_registry->register( new {{slugPascalCase}}_Blocks_Integration() );
-		}
-	);
-});
+		add_action(
+			'woocommerce_blocks_checkout_block_registration',
+			function( $integration_registry ) {
+				$integration_registry->register( new {{slugPascalCase}}_Blocks_Integration() );
+			}
+		);
+	}
+);

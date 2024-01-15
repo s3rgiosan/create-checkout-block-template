@@ -1,0 +1,63 @@
+/**
+ * External dependencies
+ */
+import { __ } from '@wordpress/i18n';
+import { useEffect, useState } from '@wordpress/element';
+import { CheckboxControl } from '@woocommerce/blocks-checkout';
+import { getSetting } from '@woocommerce/settings';
+import { useSelect, useDispatch } from '@wordpress/data';
+
+const { optInDefaultText } = getSetting('{{slugSnakeCase}}_data', '');
+
+const Block = ({ className, children, checkoutExtensionData }) => {
+	const [checked, setChecked] = useState(false);
+	const { setExtensionData } = checkoutExtensionData;
+
+	const { setValidationErrors, clearValidationError } = useDispatch(
+		'wc/store/validation'
+	);
+
+	useEffect(() => {
+		setExtensionData('{{slug}}', 'optin', checked);
+		if (!checked) {
+			setValidationErrors({
+				'{{slug}}': {
+					message: __('Please tick the box', '{{slug}}'),
+					hidden: false,
+				},
+			});
+			return;
+		}
+		clearValidationError('{{slug}}');
+	}, [clearValidationError, setValidationErrors, checked, setExtensionData]);
+
+	const { validationError } = useSelect((select) => {
+		const store = select('wc/store/validation');
+		return {
+			validationError: store.getValidationError('{{slug}}'),
+		};
+	});
+
+	return (
+		<div className={className}>
+			<CheckboxControl
+				id="{{slug}}-checkbox"
+				checked={checked}
+				onChange={setChecked}
+			>
+				{children?.[0] || optInDefaultText}
+			</CheckboxControl>
+
+			{validationError?.hidden === false && (
+				<div>
+					<span role="img" aria-label={__('Warning emoji', '{{slug}}')}>
+						⚠️
+					</span>
+					{validationError?.message}
+				</div>
+			)}
+		</div>
+	);
+};
+
+export default Block;

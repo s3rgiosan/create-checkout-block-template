@@ -1,0 +1,32 @@
+{
+	"apiVersion": 2,
+	"name": "{{namespace}}/{{slug}}",
+	"version": "0.1.0",
+	"title": "{{title}}",
+	"category": "woocommerce",
+	"description": "{{description}}",
+	"supports": {
+		"html": false,
+		"align": false,
+		"multiple": false,
+		"reusable": false
+	},
+	"parent": ["woocommerce/checkout-fields-block"],
+	"attributes": {
+		"lock": {
+			"type": "object",
+			"default": {
+				"remove": true,
+				"move": true
+			}
+		},
+		"text": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-{{namespace}}-{{slug}}",
+			"default": ""
+		}
+	},
+	"textdomain": "{{slug}}",
+	"editorStyle": "file:../../../build/style-{{slug}}-block.css"
+}
