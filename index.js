@@ -8,7 +8,7 @@ module.exports = {
 			'@wordpress/scripts',
 		],
 		transformer: ( view ) => {
-			const slugConstantCase = view.slug.toUpperCase().replace(/\s+/g, '_').replace(/[^A-Z0-9_]/g, '');
+			const slugConstantCase = view.slug.replace(/[^a-zA-Z0-9\s-]+/g, '').toUpperCase().replace(/[\s-]+/g, '_');
 			return {
 				...view,
 				slugConstantCase,
